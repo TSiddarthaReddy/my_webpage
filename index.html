@@ -1,3 +1,80 @@
+<!DOCTYPE html>
 <html>
-<body>  <h1>Thummaluru Siddartha Reddy</h1>  <p>Welcome to my website!</p>  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" /></body>
+<head>
+  <title>My Webpage</title>
+  <style>
+    .tabs {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tabs li {
+      padding: 10px;
+      background-color: #ddd;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .tabs li.active {
+      background-color: #eee;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Webpage</h1>
+  <ul class="tabs">
+    <li class="active" data-tab="research">Research</li>
+    <li data-tab="publications">Publications</li>
+    <li data-tab="academic">Academic Details</li>
+  </ul>
+  <div class="tab-content active" id="research">
+    <h2>Research</h2>
+    <p>Here is some information about my research.</p>
+  </div>
+  <div class="tab-content" id="publications">
+    <h2>Publications</h2>
+    <p>Here is a list of my publications:</p>
+    <ul>
+      <li>Publication 1</li>
+      <li>Publication 2</li>
+      <li>Publication 3</li>
+    </ul>
+  </div>
+  <div class="tab-content" id="academic">
+    <h2>Academic Details</h2>
+    <p>Here is some information about my academic background:</p>
+    <ul>
+      <li>Degree 1</li>
+      <li>Degree 2</li>
+      <li>Degree 3</li>
+    </ul>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tabs li');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.tab;
+        tabs.forEach(tab => tab.classList.remove('active'));
+        tabContents.forEach(tabContent => tabContent.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+  </script>
+</body>
 </html>
